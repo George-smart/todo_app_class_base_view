@@ -13,6 +13,17 @@ class TodoForm(forms.ModelForm):
             'todo': forms.TextInput(attrs={'class': 'form-control form-control-lg', 'placeholder': 'Add a todo'})
         }
         
+
+class UpdateTodoForm(forms.ModelForm):
+    class Meta:
+        model = TodoApp
+        fields = ['todo']
+
+        widgets = {
+            'todo': forms.TextInput(attrs={'class': 'form-control form-control-lg', 'placeholder': 'Add a todo'})
+        }
+
+        
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
 

@@ -43,7 +43,7 @@
 
                   <hr class="my-4">
       
-                  <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
+                  <!-- <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
                     <p class="small mb-0 me-2 text-muted">Filter</p>
                     <select class="select">
                       <option value="1">All</option>
@@ -51,23 +51,25 @@
                       <option value="3">Active</option>
                     </select>
                    
-                  </div>
+                  </div> -->
 
                   {% for todo in todos %}
                   <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
                     <li
                       class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
-                      <a href="" style="display: block; width: 100%; z-index: 10 ">
-                        <div class="form-check">
-                          {% if todo.is_complete %}
-                            <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1"
-                            aria-label="..." checked />
-                          {% else %}
-                            <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked1"
-                            aria-label="..." />
-                          {% endif %}
-                        </div>
-                      </a>
+              
+                        <a href="{% url 'todo:complete' todo.pk %}" style="display: block; width: 100%; z-index: 10 ">
+                          <div class="form-check">
+                            {% if todo.is_complete %}
+                              <input class="form-check-input me-0" name="checkbox" type="checkbox" value="clicked" id="flexCheckChecked1"
+                              aria-label="..." checked />
+                            {% else %}
+                              <input class="form-check-input me-0" name="check" type="checkbox" value="clicked" id="flexCheckChecked1"
+                              aria-label="..." />
+                            {% endif %}
+                          </div>
+                        </a>
+                    
                     </li>
                     <li
                       class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
@@ -75,9 +77,9 @@
                     </li>
                     <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
                       <div class="d-flex flex-row justify-content-end mb-1">
-                        <a href="" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i
+                        <a href="{% url 'todo:update' todo.pk %}" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i
                             class="fas fa-pencil-alt me-3"></i></a>
-                        <a href="" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i
+                        <a href="{% url 'todo:delete' todo.pk %}" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i
                             class="fas fa-trash-alt"></i></a>
                       </div>
                       <div class="text-end text-muted">
