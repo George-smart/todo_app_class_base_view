@@ -20,15 +20,11 @@
                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
   
                   <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
-                  <h5 style="color: red;"> 
-                    {% for msg in messages %}
-                      {{ msg }}
-                    {% endfor %}
-                  </h5>
+                 
                   <form class="mx-1 mx-md-4" action="" method="POST">
                     {% csrf_token %}
-                   
-                    <div class="d-flex flex-row align-items-center mb-4">
+                   {{ form.as_p }}
+                    {% comment %} <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="form-label" for="form3Example1c">Username</label>
@@ -62,12 +58,12 @@
                         <input type="password" name="password2" id="form3Example4cd" class="form-control" />
                        
                       </div>
-                    </div>
+                    </div> {% endcomment %}
 
   
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                       <button type="submit" class="btn btn-primary btn-lg mr-5">Register</button>
-                      <p class="small fw-bold mt-2 pt-1 mb-0 ">Already have an account? <a href="/signin"
+                      <p class="small fw-bold mt-2 pt-1 mb-0 ">Already have an account? <a href="{% url 'login' %}"
                         class="link-danger">Login</a></p>
                     </div>
   
