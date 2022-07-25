@@ -29,15 +29,14 @@ class HomeView(LoginRequiredMixin, CreateView):
         return context
 
     
-def complete(request, pk):
-    todos = TodoApp.objects.get(id=pk)
-    if request.POST.get('checkbox') == 'clicked':
-        todos.is_complete = True
+def complete(request, pk=None):
+    todoApp = TodoApp.objects.get(id=pk)
+    if todoApp.is_complete == True:
+        todoApp.is_complete = False
     else:
-        todos.is_complete = False
-        
-    todos.save()
-    return redirect('todo:home')
+        todoApp.is_complete = True
+    todoApp.save()
+    return redirect('todo:home')     
     
 
 class DeleteTodo(LoginRequiredMixin, DeleteView):
